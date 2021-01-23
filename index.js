@@ -3,8 +3,9 @@ const readLineSync= require('readline-sync');
 
 function epochToDate(epoch_time)
 {
-  const date = new Date(epoch_time * 1000);
-  return date.toLocaleString();
+  const date = parseInt(epoch_time); 
+  const dateNew = new Date(date);
+  return dateNew.toLocaleString();
 }
 
 function dateToEpoch(year,month,date,hours,minutes,seconds)
@@ -39,7 +40,7 @@ function epochDateConverter()
         const hours = readLineSync.question(chalk.yellowBright.bold("Enter the hours ?\n"));
         const minutes = readLineSync.question(chalk.yellowBright.bold("Enter the minutes ?\n"));
         const seconds = readLineSync.question(chalk.yellowBright.bold("Enter the seconds ?\n"));
-        const epoch = dateToEpoch(year,month,new_date,hours,minutes,seconds);
+        const epoch = dateToEpoch(year,month-1,new_date,hours,minutes,seconds);
         console.log(chalk.red("The epoch is: ",epoch+'\n\n'));
         break;
       case 3:
